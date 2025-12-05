@@ -14,16 +14,17 @@ import {
 import { useForm } from '@mantine/form';
 import { useAuth } from '../../hooks/useAuth';
 import { IconX } from '@tabler/icons-react';
-
+ import { useNavigate } from 'react-router-dom';
 interface SignupProps {
   onToggleMode: () => void;
 }
+
 
 //const Signup: React.FC<SignupProps> = ({ onToggleMode }) => {
 export default function Signup({onToggleMode}:SignupProps){
   const { signup, isLoading } = useAuth();
   const [error, setError] = useState<string>('');
-
+  const navigate= useNavigate();
   const form = useForm({
     initialValues: {
       name: '',
@@ -44,6 +45,7 @@ export default function Signup({onToggleMode}:SignupProps){
     try {
       setError('');
       await signup(values.email, values.password, values.name);
+      navigate("/dashboard");
     } catch (err) {
       setError('Failed to create account');
     }

@@ -14,7 +14,6 @@ import { IconMail, IconLock } from "@tabler/icons-react";
 import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 
-
 interface LoginProps {
   onToggleMode: () => void;
 }

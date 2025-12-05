@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import Login from '../components/Auth/Login';
 import Signup from '../components/Auth/Signup';
+import { useEffect } from 'react';
 
 const LoginPage: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -10,11 +11,12 @@ const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+ useEffect(() => {
   if (user) {
-    const from = location.state?.from?.pathname || '/dashboard';
+    const from = location.state?.from?.pathname || "/dashboard";
     navigate(from, { replace: true });
-    return null;
   }
+}, [user, navigate, location]);
 
   return isLogin ? (
     <Login onToggleMode={() => setIsLogin(false)} />

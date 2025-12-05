@@ -7,6 +7,7 @@ import AppLayout from './components/Layout/AppLayout';
 import LoginPage from './pages/LoginPage';
 import {Dashboard} from './pages/Dashboard';
 import { Employee } from './pages/Employee';
+// import Signup from './components/Auth/Signup';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <AuthProvider>
         <Router>
           <Routes>
+            {/* <Route path="/signup" element={<Signup} */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route
